@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+}
+body,
+p {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.controll_buttons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: aquamarine;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgba(3, 169, 244, 0.9);
+}
+.controll_buttons span {
+  background-color: #f44336;
+  color: white;
+  padding: 15px 25px;
+  font-size: 30px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.controll_buttons input {
+  padding: 15px;
+  border-radius: 6px;
+  width: 200px;
+}
+.controll_buttons input,
+#go_btn {
+  display: none;
+}
+#warning {
+  display: none;
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+}
+.info_container {
+  width: 80%;
+  margin: 10px auto;
+  border: 1px solid #2196f3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+.memory_game_blocks {
+  width: 80%;
+  margin: 30px auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.memory_game_blocks.no_clicking {
+  pointer-events: none; /*deh btw2f al click event*/
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 200px;
+  height: 130px;
+}
+.game_block {
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.5s;
+  width: 200px;
+  height: 130px;
+  transform-style: preserve-3d; /*deh 34an lma al3onsr ylf 180deg msln yfdl zy ma hwa fa deh bt7fz 4klo fe al 3rd w kant fe vid al css rgm 73 t2rebn*/
+}
+.game_block .front {
+  background-color: #333;
+  text-align: center; /*34an '!' tegy fe alnos*/
+}
+.game_block .front::before {
+  content: "!";
+  color: white;
+  font-size: 100px;
+  font-weight: bold;
+}
+.game_block .back {
+  transform: rotateY(180deg);
+}
+.game_block .face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /**/
+  border: 5px solid #2196f3;
+}
+.game_block.is_flipped,
+.game_block.has_matched {
+  /* al class dah aly h7oto le al html be al js*/
+  /* 34an azbtha 3la kol al browsers */
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  pointer-events: none;
+}
